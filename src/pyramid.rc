@@ -1,0 +1,110 @@
+/*  pyramid.rc - resource script for the game
+ */
+
+/*
+    Pyramid, a Patience Game for the Psion Series 3
+    Version 1.0a
+    Copyright (C) 1993  J Cade Roux
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+ * See the file COPYING for the GNU General Public License.
+ * Mail: Cade Roux
+ *                      c/o Dubroca
+ *                      Box 513
+ *                      Boutte, LA  70039
+ *                      USA
+ */
+
+#include "global.h"
+
+#define PSION_SYMBOL            <0x02>
+#define UP_ARROW 					  <0x18>
+#define DOWN_ARROW              <0x19>
+#define RIGHT_ARROW             <0x1A>
+#define LEFT_ARROW              <0x1B>
+
+STRUCT STRING {
+	TEXT    str ;
+}
+
+STRUCT TOPIC_ARRAY {
+	LEN BYTE LINK id_lst[] ;
+}
+
+STRUCT HELP_ARRAY {
+	LINK topic_id = 0 ;
+	TEXT topic ;
+	LEN BYTE STRUCT strlst[] ;
+}
+
+RESOURCE STRING rs_quit { str = "Quit?" ; }
+RESOURCE STRING rs_new_game { str = "New Game?" ; }
+RESOURCE STRING rs_no { str = "No" ; }
+RESOURCE STRING rs_yes { str = "Yes" ; }
+
+RESOURCE HELP_ARRAY rh_main {
+	topic = "Index" ;
+	topic_id = rt_main ;
+}
+
+RESOURCE TOPIC_ARRAY rt_main {
+	id_lst = {	rh_rules,
+					rh_controls,
+					rh_about
+					} ;
+}
+
+RESOURCE HELP_ARRAY rh_rules {
+	topic = "Pyramid Rules" ;
+	strlst = {	STRING { str = "The tableau is in the form of a pyramid." ; },
+					STRING { str = "The object of the game is to remove as" ; },
+					STRING { str = "many cards from the pyramid as possible." ; },
+					STRING { str = "" ; },
+					STRING { str = "Only those cards which are not overlapped" ; },
+					STRING { str = "by other cards can be removed.  A pair of" ; },
+					STRING { str = "cards which total 13 in value, or a" ; },
+					STRING { str = "singleton King may be removed." ; },
+					STRING { str = "" ; },
+					STRING { str = "The face down pile is the hand which is" ; },
+					STRING { str = "turned up one card at a time onto the talon" ; },
+					STRING { str = "pile, of which the top card may also be used" ; },
+					STRING { str = "to make a match." ; },
+					STRING { str = "" ; },
+					STRING { str = "The Kings and pairs are discarded." ; }
+					} ;
+}
+
+RESOURCE HELP_ARRAY rh_controls {
+	topic = "Pyramid Controls" ;
+	strlst = {	STRING { str = LEFT_ARROW", "RIGHT_ARROW" keys move cursor," ; },
+					STRING { str = "<Space> picks up/places card" ; },
+					STRING { str = "<Esc> cancels pick up" ; },
+					STRING { str = "<Enter> draws from hand" ; }
+					} ;
+}
+
+RESOURCE HELP_ARRAY rh_about {
+	topic = "About Pyramid" ;
+	strlst = {	STRING { str = "Pyramid: " VERSION_STRING ; },
+					STRING { str = "Copyright (C) 1993 J Cade Roux" ; },
+					STRING { str = "Free software under the terms of the" ; },
+					STRING { str = "GNU General Public License." ; },
+					STRING { str = "" ; },
+					STRING { str = "Press <Ctrl>-<Help> for index." ; }
+					} ;
+}
+
+

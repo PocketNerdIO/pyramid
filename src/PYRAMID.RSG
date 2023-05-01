@@ -1,0 +1,9 @@
+#define RS_QUIT 1
+#define RS_NEW_GAME 2
+#define RS_NO 3
+#define RS_YES 4
+#define RH_MAIN 5
+#define RT_MAIN 6
+#define RH_RULES 7
+#define RH_CONTROLS 8
+#define RH_ABOUT 9

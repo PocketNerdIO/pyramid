@@ -1,0 +1,13 @@
+#noedit
+#abort on
+#system epoc img
+#model small jpi
+
+#pragma optimize(speed=>off)
+#pragma debug(vid=>off)
+#pragma define(EPOC=>1,JPIC=>1)
+
+#compile utils.c
+
+#dolink utils.lib
+
